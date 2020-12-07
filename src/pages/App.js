@@ -40,7 +40,7 @@ function App() {
                 </LinkContainer>
                 <LinkContainer to='/propertOverview'>
                   <Nav.Link href='#pricing'>
-                    <p>PropertyOverview</p>
+                    <p>Property overview</p>
                   </Nav.Link>
                 </LinkContainer>
                 <LinkContainer to='/bookings'>

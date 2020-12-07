@@ -4,10 +4,12 @@ import { SignUp } from '../components/SignUp'
 
 export const HomePage = () => {
   return (
-    <>
+    <div>
       <h1>I am home page</h1>
-      <Button variant="success">Getting Started</Button>
+      <Button style={{ marginBottom: '1rem' }} variant='success'>
+        Getting Started
+      </Button>
       <SignUp />
-    </>
+    </div>
   )
 }
