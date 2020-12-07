@@ -20,69 +20,69 @@ import { HomePage } from './Home'
 function App() {
   const maybe = 'hello'
   return (
-    <div className="App">
+    <div className='App'>
       <HashRouter>
-        <Container className="pt-3">
-          <Navbar collapseOnSelect expand="md" className="navBar">
-            <Navbar.Brand href="#home">Logo</Navbar.Brand>
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-            <Navbar.Collapse id="responsive-navbar-nav">
-              <Nav className="mr-auto">
-                <LinkContainer to="/home">
-                  <Nav.Link href="#features">
+        <Container className='pt-3'>
+          <Navbar collapseOnSelect expand='md' className='navBar'>
+            <Navbar.Brand href='#home'>Logo</Navbar.Brand>
+            <Navbar.Toggle aria-controls='responsive-navbar-nav' />
+            <Navbar.Collapse id='responsive-navbar-nav'>
+              <Nav className='mr-auto'>
+                <LinkContainer to='/home'>
+                  <Nav.Link href='#features'>
                     <p>Home</p>
                   </Nav.Link>
                 </LinkContainer>
-                <LinkContainer to="/createHotel">
-                  <Nav.Link href="#pricing">
+                <LinkContainer to='/createHotel'>
+                  <Nav.Link href='#pricing'>
                     <p>List your hotel</p>
                   </Nav.Link>
                 </LinkContainer>
-                <LinkContainer to="/propertOverview">
-                  <Nav.Link href="#pricing">
+                <LinkContainer to='/propertOverview'>
+                  <Nav.Link href='#pricing'>
                     <p>PropertyOverview</p>
                   </Nav.Link>
                 </LinkContainer>
-                <LinkContainer to="/bookings">
-                  <Nav.Link href="#pricing">
+                <LinkContainer to='/bookings'>
+                  <Nav.Link href='#pricing'>
                     <p>Reservations</p>
                   </Nav.Link>
                 </LinkContainer>
-                <LinkContainer to="/ratesAndAvailab">
-                  <Nav.Link href="#pricing">
+                <LinkContainer to='/ratesAndAvailab'>
+                  <Nav.Link href='#pricing'>
                     <p>Rates and availabilites</p>
                   </Nav.Link>
                 </LinkContainer>
-                <LinkContainer to="/promotions">
-                  <Nav.Link href="#pricing">
+                <LinkContainer to='/promotions'>
+                  <Nav.Link href='#pricing'>
                     <p>Promotions</p>
                   </Nav.Link>
                 </LinkContainer>
-                <LinkContainer to="/reviews">
-                  <Nav.Link href="#pricing">
+                <LinkContainer to='/reviews'>
+                  <Nav.Link href='#pricing'>
                     <p>Guest reviews</p>
                   </Nav.Link>
                 </LinkContainer>
               </Nav>
               <Nav>
-                <Nav.Link href="#deets">
-                  <Button variant="success">Login</Button>
+                <Nav.Link href='#deets'>
+                  <Button variant='success'>Login</Button>
                 </Nav.Link>
-                <Nav.Link eventKey={2} href="#memes">
-                  <Button variant="success">Sign up</Button>
+                <Nav.Link eventKey={2} href='#memes'>
+                  <Button variant='success'>Sign up</Button>
                 </Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Navbar>
 
           <Switch>
-            <Route path="/createHotel" exact component={CreateHotelPage} />
-            <Route path="/propertOverview" exact component={PropertOverView} />
-            <Route path="/bookings" exact component={ReservationsPage} />
-            <Route path="/ratesAndAvailab" exact component={RatesAndAvailab} />
-            <Route path="/promotions" exact component={PromotionsPage} />
-            <Route path="/reviews" exact component={GuestReviews} />
-            <Route path="/" component={HomePage} />
+            <Route path='/createHotel' exact component={CreateHotelPage} />
+            <Route path='/propertOverview' exact component={PropertOverView} />
+            <Route path='/bookings' exact component={ReservationsPage} />
+            <Route path='/ratesAndAvailab' exact component={RatesAndAvailab} />
+            <Route path='/promotions' exact component={PromotionsPage} />
+            <Route path='/reviews' exact component={GuestReviews} />
+            <Route path='/' component={HomePage} />
           </Switch>
         </Container>
       </HashRouter>
