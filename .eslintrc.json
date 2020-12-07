@@ -1,0 +1,12 @@
+{
+    "parser": "babel-eslint",
+    "extends": ["standard", "standard-jsx", "standard-react"],
+    "rules": {
+        "react/prop-types": "off",
+        "no-async-promise-executor": "off",
+        "no-misleading-character-class": "off",
+        "no-useless-catch": "off",
+        "jsx-quotes": ["error", "prefer-single"],
+        "no-unused-vars": "off" 
+      }
+  }

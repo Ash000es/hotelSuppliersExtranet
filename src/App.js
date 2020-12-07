@@ -1,25 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+/* eslint-disable space-before-function-paren */
+/* eslint-disable jsx-quotes */
+import React from 'react'
+import './App.css'
 
 function App() {
+  const maybe = 'hello'
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1> maybe it works and maye not</h1>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
