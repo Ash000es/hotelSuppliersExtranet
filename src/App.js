@@ -7,7 +7,7 @@ function App() {
   const maybe = 'hello'
   return (
     <div className="App">
-      <h1> maybe it works and maye not</h1>
+      <h1> {`${maybe} hello me`}</h1>
     </div>
   )
 }
