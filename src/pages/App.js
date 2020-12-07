@@ -69,7 +69,7 @@ function App() {
                   <Button variant="success">Login</Button>
                 </Nav.Link>
                 <Nav.Link eventKey={2} href="#memes">
-                  {/* Cart items */}
+                  <Button variant="success">Sign up</Button>
                 </Nav.Link>
               </Nav>
             </Navbar.Collapse>
