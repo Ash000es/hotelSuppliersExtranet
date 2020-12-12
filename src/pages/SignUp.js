@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Form, Input, Button, Checkbox, Card } from 'antd'
 import Axios from 'axios'
 import { publicFetch } from '../Helpers/Helpers'
 import { Redirect } from 'react-router-dom'
+import { AuthContext } from '../providers/AuthProvider'
 const layout = {
   labelCol: {
     span: 8
@@ -19,6 +20,7 @@ const tailLayout = {
 }
 
 export const SignUp = () => {
+  const authContext = useContext(AuthContext)
   const [signupSuccess, setSignupSuccess] = useState()
   const [signupError, setSignupError] = useState()
   const [loginLoading, setLoginLoading] = useState(false)
@@ -34,6 +36,7 @@ export const SignUp = () => {
           'Content-Type': 'application/json'
         }
       })
+      authContext.setAuthState(data)
       setSignupSuccess(data.message)
       setSignupError('')
 

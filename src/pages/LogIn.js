@@ -1,16 +1,16 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { Form, Input, Button, Checkbox, Card } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
+import { AuthContext } from '../providers/AuthProvider'
+import { Redirect } from 'react-router-dom'
 import Axios from 'axios'
 
 export const LogIn = () => {
+  const authContext = useContext(AuthContext)
   const [signupSuccess, setSignupSuccess] = useState()
   const [signupError, setSignupError] = useState()
   const [loginLoading, setLoginLoading] = useState(false)
   const [redirectOnLogin, setRedirectOnLogin] = useState(false)
-  // const onFinish = (values) => {
-  //   console.log('Received values of form: ', values)
-  // }
 
   const submitCredentials = async (values) => {
     try {
@@ -23,6 +23,7 @@ export const LogIn = () => {
         }
       })
       console.log(data, 'data back')
+      authContext.setAuthState(data)
       setSignupSuccess(data.message)
       setSignupError('')
 
@@ -40,7 +41,7 @@ export const LogIn = () => {
 
   return (
     <>
-      {/* {redirectOnLogin && <Redirect to='./dashboard' />} */}
+      {redirectOnLogin && <Redirect to='./dashboard' />}
       <Card style={{ width: '50%' }}>
         <Form
           name='normal_login'

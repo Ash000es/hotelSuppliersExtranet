@@ -4,6 +4,7 @@ import React, { useContext, useState, useEffect } from 'react'
 import { BrowserRouter as Router, MemoryRouter, HashRouter, Switch, Route } from 'react-router-dom'
 import Axios from 'axios'
 import './App.css'
+import { AuthContext } from '../providers/AuthProvider'
 
 import { CreateHotelPage } from './CreateHotel'
 import { PropertOverView } from './PropertyOverview'
@@ -47,9 +48,11 @@ const AppRoutes = () => {
 function App() {
   return (
     <Router>
+      {/* <AuthContext> */}
       <div className='bg-gray-100'>
         <AppRoutes />
       </div>
+      {/* </AuthContext> */}
     </Router>
   )
 }
