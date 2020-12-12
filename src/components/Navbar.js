@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button'
 
 export const NavBar = () => {
   return (
-    <Container className='pt-3'>
+    <Container style={{ width: '100%' }}>
       <Navbar collapseOnSelect expand='md' className='navBar'>
         <Navbar.Brand href='#home'>Logo</Navbar.Brand>
         <Navbar.Toggle aria-controls='responsive-navbar-nav' />
@@ -53,15 +53,23 @@ export const NavBar = () => {
                 <p>Account view</p>
               </Nav.Link>
             </LinkContainer>
+            <LinkContainer to='/SignUP'>
+              <Nav.Link href='#pricing'>
+                <Button variant='success'>Sign up</Button>
+              </Nav.Link>
+            </LinkContainer>
+            <LinkContainer to='/LogIn'>
+              <Nav.Link href='#pricing'>
+                <Button variant='success'>Login</Button>
+              </Nav.Link>
+            </LinkContainer>
           </Nav>
-          <Nav>
+          {/* <Nav>
             <Nav.Link href='#deets'>
               <Button variant='success'>Login</Button>
             </Nav.Link>
-            <Nav.Link eventKey={2} href='#memes'>
-              <Button variant='success'>Sign up</Button>
-            </Nav.Link>
-          </Nav>
+            <Nav.Link eventKey={2} href='#memes'></Nav.Link>
+          </Nav> */}
         </Navbar.Collapse>
       </Navbar>
     </Container>

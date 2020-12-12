@@ -13,6 +13,9 @@ import { PromotionsPage } from './Promotions'
 import { GuestReviews } from './GuestReviews'
 import { HomePage } from './Home'
 import { AccountView } from './Account'
+import { LogIn } from './LogIn'
+import { SignUp } from './SignUp'
+import { DashBoard } from './dashBoard'
 import { AppShell } from '../components/AppShell'
 
 const AppRoutes = () => {
@@ -31,6 +34,9 @@ const AppRoutes = () => {
       </Route>
       <Route path='/promotions' exact component={PromotionsPage} />
       <Route path='/reviews' exact component={GuestReviews} />
+      <Route path='/SignUP' exact component={SignUp} />
+      <Route path='/LogIn' exact component={LogIn} />
+      <Route path='/dashBoard' exact component={DashBoard} />
       <Route path='/'>
         <HomePage />
       </Route>
