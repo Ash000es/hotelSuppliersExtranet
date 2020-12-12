@@ -1,5 +1,10 @@
 import React, { useState } from 'react'
-
+import { NavBar } from '../components/Navbar'
 export const PropertOverView = () => {
-  return <h1>I am property page</h1>
+  return (
+    <div>
+      <NavBar />
+      <h1>I propertyoverview page</h1>
+    </div>
+  )
 }

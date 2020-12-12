@@ -1,5 +1,10 @@
 import React, { useState } from 'react'
-
+import { NavBar } from '../components/Navbar'
 export const PromotionsPage = () => {
-  return <h1>I am promotions page</h1>
+  return (
+    <div>
+      <NavBar />
+      <h1>I am promo page</h1>
+    </div>
+  )
 }
