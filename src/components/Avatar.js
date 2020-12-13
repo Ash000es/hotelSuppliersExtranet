@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export const LetterAvatars = () => {
+export const firstLetterAvatars = () => {
   const auth = useContext(AuthContext)
   const { authState } = auth
   const classes = useStyles()

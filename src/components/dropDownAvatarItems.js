@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { Menu, Dropdown } from 'antd'
 import { DownOutlined } from '@ant-design/icons'
-import { LetterAvatars } from './Avatar'
+import { firstLetterAvatars } from './Avatar'
 import { AuthContext } from '../providers/AuthProvider'
 import { useHistory } from 'react-router-dom'
 
