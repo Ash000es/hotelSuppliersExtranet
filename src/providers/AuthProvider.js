@@ -1,4 +1,4 @@
-import React, { useState, createContext, useEffect } from 'react'
+import React, { useState, createContext } from 'react'
 import { useHistory } from 'react-router-dom'
 const AuthContext = createContext()
 const { Provider } = AuthContext
@@ -14,15 +14,23 @@ const AuthProvider = ({ children }) => {
     expiresAt: expiresAt,
     userInfo: userInfo ? JSON.parse(userInfo) : {}
   })
+  console.log(authState, 'provider 252')
+
   const isAuthenticated = () => {
-    if (!authState.token) {
+    if (!authState.token || !authState.expiresAt) {
       return false
-    } else {
-      return new Date().getTime / 1000 < authState.expiresAt
     }
+    return new Date().getTime() / 1000 < authState.expiresAt
   }
 
-  console.log(authState, 'provider 252')
+  console.log(isAuthenticated(), 'look here...')
+
+  // if (!authState.token || !authState.expiresAt) {
+  //   console.log('false')
+  // } else {
+  //   console.log('time here')
+  // }
+
   const setAuthInfo = ({ token, userInfo, expiresAt }) => {
     window.localStorage.setItem('token', token)
     window.localStorage.setItem('userInfo', JSON.stringify(userInfo))
@@ -48,15 +56,7 @@ const AuthProvider = ({ children }) => {
   const isAdmin = () => {
     return authState.userInfo.role === 'admin'
   }
-  // const isAuthenticated = () => {
-  //   console.log(authState.token, 'true')
-  //   if (!authState.token || !authState.expiresAt) {
-  //     return false
-  //   } else {
-  //     return new Date().getTime / 1000 < authState.expiresAt
-  //   }
-  // }
-  // console.log(isAuthenticated(), 'look here...')
+
   return (
     <Provider
       value={{

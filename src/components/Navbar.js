@@ -54,9 +54,7 @@ export const NavBar = () => {
             </LinkContainer>
           </Nav>
           <Nav>
-            <Nav.Link href='#deets'>
-              <firstLetterAvatars />
-            </Nav.Link>
+            <Nav.Link href='#deets'>{/* <firstLetterAvatars /> */}</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

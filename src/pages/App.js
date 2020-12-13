@@ -57,7 +57,6 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        {/* <NavBar /> */}
         <div className='bg-gray-100'>
           <AppRoutes />
         </div>
