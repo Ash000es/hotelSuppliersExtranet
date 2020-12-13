@@ -11,24 +11,21 @@ export const LogIn = () => {
   const [loginError, setLoginError] = useState()
   const [loginLoading, setLoginLoading] = useState(false)
   const [redirectOnLogin, setRedirectOnLogin] = useState(false)
-  console.log(authContext, 'isit ')
 
   const submitCredentials = async (values) => {
     try {
       setLoginLoading(true)
-      console.log('Success:', values)
 
       const { data } = await Axios.post('http://localhost:5000/users/login', values, {
         headers: {
           'Content-Type': 'application/json'
         }
       })
-      console.log(data, 'data back')
-      authContext.setAuthInfo(data)
+
+      authContext.setAuthState(data)
       setLoginSuccess(data.message)
       setLoginError('')
 
-      console.log('Success:', data)
       setRedirectOnLogin(true)
     } catch (error) {
       console.log(error, 'erro')

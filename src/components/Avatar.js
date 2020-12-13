@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import Avatar from '@material-ui/core/Avatar'
 import { deepOrange, deepPurple } from '@material-ui/core/colors'
 import { AuthContext } from '../providers/AuthProvider'
+import { DropDownAvatarItems } from './dropDownAvatarItems'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,13 +27,11 @@ export const LetterAvatars = () => {
   const { authState } = auth
   const classes = useStyles()
   const fallBackAvatar = 'A'
-  // if (auth) return console.log(auth.authState.userInfo.firstName, 'lol')
-
-  //
 
   return (
     <div className={classes.root}>
       <Avatar className={classes.orange}>{authState.userInfo.firstName || fallBackAvatar}</Avatar>
+      <DropDownAvatarItems />
     </div>
   )
 }

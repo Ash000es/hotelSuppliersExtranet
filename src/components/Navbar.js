@@ -10,13 +10,13 @@ export const NavBar = () => {
   return (
     <Container style={{ width: '100%' }}>
       <Navbar collapseOnSelect expand='md' className='navBar'>
-        <Navbar.Brand href='#home'>Logo</Navbar.Brand>
+        <Navbar.Brand href='/'>Logo</Navbar.Brand>
         <Navbar.Toggle aria-controls='responsive-navbar-nav' />
         <Navbar.Collapse id='responsive-navbar-nav'>
           <Nav className='mr-auto'>
-            <LinkContainer to='/home'>
+            <LinkContainer to='/dashboard'>
               <Nav.Link href='#features'>
-                <p>Home</p>
+                <p>dashboard</p>
               </Nav.Link>
             </LinkContainer>
             <LinkContainer to='/createHotel'>
@@ -50,26 +50,13 @@ export const NavBar = () => {
               </Nav.Link>
             </LinkContainer>
             <LinkContainer to='/account'>
-              <Nav.Link href='#pricing'>
-                <p>Account view</p>
-              </Nav.Link>
-            </LinkContainer>
-            <LinkContainer to='/SignUP'>
-              <Nav.Link href='#pricing'>
-                <Button variant='success'>Sign up</Button>
-              </Nav.Link>
-            </LinkContainer>
-            <LinkContainer to='/LogIn'>
-              <Nav.Link href='#pricing'>
-                <Button variant='success'>Login</Button>
-              </Nav.Link>
+              <Nav.Link href='#pricing'>Account view</Nav.Link>
             </LinkContainer>
           </Nav>
           <Nav>
             <Nav.Link href='#deets'>
               <LetterAvatars />
             </Nav.Link>
-            {/* <Nav.Link eventKey={2} href='#memes'></Nav.Link> */}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
