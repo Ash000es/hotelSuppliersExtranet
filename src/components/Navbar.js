@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
 import { LinkContainer } from 'react-router-bootstrap'
 import Button from 'react-bootstrap/Button'
 import { NameAvatar } from './Avatar'
+import { AuthContext } from '../providers/AuthProvider'
 
 export const NavBar = () => {
+  const authContext = useContext(AuthContext)
+  const { role } = authContext.authState.userInfo
+  // here I need to create an array of navlink items and map it below with arr.include function
   return (
     <Container style={{ width: '100%' }}>
       <Navbar collapseOnSelect expand='md' className='navBar'>
