@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Avatar from '@material-ui/core/Avatar'
 import { deepOrange, deepPurple } from '@material-ui/core/colors'
+import { AuthContext } from '../providers/AuthProvider'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,13 +22,17 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export const LetterAvatars = () => {
+  const auth = useContext(AuthContext)
+  const { authState } = auth
   const classes = useStyles()
+  const fallBackAvatar = 'A'
+  // if (auth) return console.log(auth.authState.userInfo.firstName, 'lol')
+
+  //
 
   return (
     <div className={classes.root}>
-      <Avatar>H</Avatar>
-      <Avatar className={classes.orange}>N</Avatar>
-      <Avatar className={classes.purple}>OP</Avatar>
+      <Avatar className={classes.orange}>{authState.userInfo.firstName || fallBackAvatar}</Avatar>
     </div>
   )
 }

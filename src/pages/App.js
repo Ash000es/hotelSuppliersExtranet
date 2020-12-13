@@ -1,10 +1,17 @@
 /* eslint-disable space-before-function-paren */
 /* eslint-disable jsx-quotes */
 import React, { useContext, useState, useEffect } from 'react'
-import { BrowserRouter as Router, MemoryRouter, HashRouter, Switch, Route } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  MemoryRouter,
+  HashRouter,
+  Switch,
+  Route,
+  Redirect
+} from 'react-router-dom'
 import Axios from 'axios'
 import './App.css'
-import { AuthContext } from '../providers/AuthProvider'
+import { AuthContext, AuthProvider } from '../providers/AuthProvider'
 
 import { CreateHotelPage } from './CreateHotel'
 import { PropertOverView } from './PropertyOverview'
@@ -18,6 +25,7 @@ import { LogIn } from './LogIn'
 import { SignUp } from './SignUp'
 import { DashBoard } from './dashBoard'
 import { AppShell } from '../components/AppShell'
+import { NavBar } from '../components/Navbar'
 
 const AppRoutes = () => {
   return (
@@ -48,11 +56,12 @@ const AppRoutes = () => {
 function App() {
   return (
     <Router>
-      {/* <AuthContext> */}
-      <div className='bg-gray-100'>
-        <AppRoutes />
-      </div>
-      {/* </AuthContext> */}
+      <AuthProvider>
+        {/* <NavBar /> */}
+        <div className='bg-gray-100'>
+          <AppRoutes />
+        </div>
+      </AuthProvider>
     </Router>
   )
 }

@@ -4,6 +4,7 @@ import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
 import { LinkContainer } from 'react-router-bootstrap'
 import Button from 'react-bootstrap/Button'
+import { LetterAvatars } from './Avatar'
 
 export const NavBar = () => {
   return (
@@ -64,12 +65,12 @@ export const NavBar = () => {
               </Nav.Link>
             </LinkContainer>
           </Nav>
-          {/* <Nav>
+          <Nav>
             <Nav.Link href='#deets'>
-              <Button variant='success'>Login</Button>
+              <LetterAvatars />
             </Nav.Link>
-            <Nav.Link eventKey={2} href='#memes'></Nav.Link>
-          </Nav> */}
+            {/* <Nav.Link eventKey={2} href='#memes'></Nav.Link> */}
+          </Nav>
         </Navbar.Collapse>
       </Navbar>
     </Container>

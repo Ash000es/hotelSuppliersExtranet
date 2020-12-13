@@ -7,10 +7,11 @@ import Axios from 'axios'
 
 export const LogIn = () => {
   const authContext = useContext(AuthContext)
-  const [signupSuccess, setSignupSuccess] = useState()
-  const [signupError, setSignupError] = useState()
+  const [loginSuccess, setLoginSuccess] = useState()
+  const [loginError, setLoginError] = useState()
   const [loginLoading, setLoginLoading] = useState(false)
   const [redirectOnLogin, setRedirectOnLogin] = useState(false)
+  console.log(authContext, 'isit ')
 
   const submitCredentials = async (values) => {
     try {
@@ -23,9 +24,9 @@ export const LogIn = () => {
         }
       })
       console.log(data, 'data back')
-      authContext.setAuthState(data)
-      setSignupSuccess(data.message)
-      setSignupError('')
+      authContext.setAuthInfo(data)
+      setLoginSuccess(data.message)
+      setLoginError('')
 
       console.log('Success:', data)
       setRedirectOnLogin(true)
@@ -33,9 +34,9 @@ export const LogIn = () => {
       console.log(error, 'erro')
       setLoginLoading(false)
       const { data } = error.response
-      setSignupError(data.message)
+      setLoginError(data.message)
       console.log(data.message, 'mesag')
-      setSignupSuccess('')
+      setLoginSuccess('')
     }
   }
 

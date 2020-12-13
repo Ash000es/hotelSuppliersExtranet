@@ -44,6 +44,7 @@ export const SignUp = () => {
       setRedirectOnLogin(true)
     } catch (error) {
       setLoginLoading(false)
+      console.log(error)
       const { data } = error.response
       setSignupError(data.message)
       console.log(data.message)
