@@ -14,6 +14,13 @@ const AuthProvider = ({ children }) => {
     expiresAt: expiresAt,
     userInfo: userInfo ? JSON.parse(userInfo) : {}
   })
+  const isAuthenticated = () => {
+    if (!authState.token) {
+      return false
+    } else {
+      return new Date().getTime / 1000 < authState.expiresAt
+    }
+  }
 
   console.log(authState, 'provider 252')
   const setAuthInfo = ({ token, userInfo, expiresAt }) => {
@@ -41,15 +48,15 @@ const AuthProvider = ({ children }) => {
   const isAdmin = () => {
     return authState.userInfo.role === 'admin'
   }
-  const isAuthenticated = () => {
-    console.log(authState.token, 'true')
-    if (!authState.token || !authState.expiresAt) {
-      return false
-    } else {
-      return new Date().getTime / 1000 < authState.expiresAt
-    }
-  }
-  console.log(isAuthenticated(), 'look here...')
+  // const isAuthenticated = () => {
+  //   console.log(authState.token, 'true')
+  //   if (!authState.token || !authState.expiresAt) {
+  //     return false
+  //   } else {
+  //     return new Date().getTime / 1000 < authState.expiresAt
+  //   }
+  // }
+  // console.log(isAuthenticated(), 'look here...')
   return (
     <Provider
       value={{

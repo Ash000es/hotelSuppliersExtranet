@@ -9,7 +9,7 @@ import { AuthContext } from '../providers/AuthProvider'
 export const HomePage = () => {
   const authContext = useContext(AuthContext)
   const isIt = authContext.isAuthenticated()
-  console.log(isIt, 'isit')
+  console.log(authContext, isIt, 'here')
   return (
     <>
       <CredentialsLink />
