@@ -1,37 +1,42 @@
-import React, { useContext } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import Avatar from '@material-ui/core/Avatar'
-import { deepOrange, deepPurple } from '@material-ui/core/colors'
+import React, { useContext, useState } from 'react'
 import { AuthContext } from '../providers/AuthProvider'
 import { DropDownAvatarItems } from './dropDownAvatarItems'
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    '& > *': {
-      margin: theme.spacing(1)
-    }
-  },
-  orange: {
-    color: theme.palette.getContrastText(deepOrange[500]),
-    backgroundColor: deepOrange[500]
-  },
-  purple: {
-    color: theme.palette.getContrastText(deepPurple[500]),
-    backgroundColor: deepPurple[500]
-  }
-}))
+import { Avatar, Button } from 'antd'
+const UserList = ['U', 'Lucy', 'Tom', 'Edward']
+const ColorList = ['#f56a00', '#7265e6', '#ffbf00', '#00a2ae']
+const GapList = [4, 3, 2, 1]
 
-export const firstLetterAvatars = () => {
-  const auth = useContext(AuthContext)
-  const { authState } = auth
-  const classes = useStyles()
-  const fallBackAvatar = 'A'
+export const NameAvatar = () => {
+  const [user, setUser] = useState(UserList[0])
+  const [color, setColor] = useState(ColorList[0])
+  const [gap, setGap] = useState(GapList[0])
+
+  const changeUser = () => {
+    const index = UserList.indexOf(user)
+    setUser(index < UserList.length - 1 ? UserList[index + 1] : UserList[0])
+    setColor(index < ColorList.length - 1 ? ColorList[index + 1] : ColorList[0])
+  }
+
+  const changeGap = () => {
+    const index = GapList.indexOf(gap)
+    setGap(index < GapList.length - 1 ? GapList[index + 1] : GapList[0])
+  }
 
   return (
-    <div className={classes.root}>
-      <Avatar className={classes.orange}>{authState.userInfo.firstName || fallBackAvatar}</Avatar>
+    <>
+      <Avatar
+        style={{
+          backgroundColor: color,
+          verticalAlign: 'middle'
+        }}
+        size='large'
+        gap={gap}
+      >
+        {user}
+      </Avatar>
+
       <DropDownAvatarItems />
-    </div>
+    </>
   )
 }

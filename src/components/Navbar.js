@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
 import { LinkContainer } from 'react-router-bootstrap'
 import Button from 'react-bootstrap/Button'
-import { firstLetterAvatars } from './Avatar'
+import { NameAvatar } from './Avatar'
 
 export const NavBar = () => {
   return (
@@ -54,7 +54,11 @@ export const NavBar = () => {
             </LinkContainer>
           </Nav>
           <Nav>
-            <Nav.Link href='#deets'>{/* <firstLetterAvatars /> */}</Nav.Link>
+            <Nav.Link href='#deets'>
+              <div style={{ width: 75 }}>
+                <NameAvatar />
+              </div>
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
