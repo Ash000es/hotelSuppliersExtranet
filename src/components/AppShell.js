@@ -3,12 +3,13 @@ import { Footer } from './Footer'
 import { NavBar } from './Navbar'
 import { SideBar } from './Sidebar'
 
-export const AppShell = () => {
+export const AppShell = ({ children }) => {
   return (
-    <div>
-      <SideBar />
-
-      <Footer />
-    </div>
+    <>
+      <div>{children}</div>
+      <div>
+        <Footer />
+      </div>
+    </>
   )
 }

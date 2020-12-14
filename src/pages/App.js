@@ -1,3 +1,4 @@
+/* eslint-disable multiline-ternary */
 /* eslint-disable space-before-function-paren */
 /* eslint-disable jsx-quotes */
 import React, { useContext, useState, useEffect } from 'react'
@@ -27,25 +28,58 @@ import { DashBoard } from './dashBoard'
 import { AppShell } from '../components/AppShell'
 import { NavBar } from '../components/Navbar'
 
+const AuthenticatedRoutes = ({ children, ...rest }) => {
+  const authContext = useContext(AuthContext)
+  return (
+    <Route
+      {...rest}
+      render={() =>
+        authContext.isAuthenticated() ? <AppShell>{children}</AppShell> : <Redirect to='/' />
+      }
+    />
+  )
+}
+const AdminRoutes = ({ children, ...rest }) => {
+  const authContext = useContext(AuthContext)
+  return (
+    <Route
+      {...rest}
+      render={() =>
+        authContext.isAuthenticated() && authContext.isAdmin() ? [children] : <Redirect to='/' />
+      }
+    />
+  )
+}
 const AppRoutes = () => {
+  const authContext = useContext(AuthContext)
   return (
     <Switch>
-      <Route path='/account' exact>
-        <AppShell>
-          <AccountView />
-        </AppShell>
-      </Route>
-      <Route path='/createHotel' exact component={CreateHotelPage} />
-      <Route path='/propertOverview' exact component={PropertOverView} />
-      <Route path='/bookings' exact component={ReservationsPage} />
-      <Route exact path='/ratesAndAvailab'>
+      <AuthenticatedRoutes path='/account' exact>
+        <AccountView />
+      </AuthenticatedRoutes>
+      <AuthenticatedRoutes path='/createHotel' exact>
+        <CreateHotelPage />
+      </AuthenticatedRoutes>
+      <AuthenticatedRoutes path='/propertOverview' exact>
+        <PropertOverView />
+      </AuthenticatedRoutes>
+      <AuthenticatedRoutes path='/bookings' exact>
+        <ReservationsPage />
+      </AuthenticatedRoutes>
+      <AdminRoutes exact path='/ratesAndAvailab'>
         <RatesAndAvailab />
-      </Route>
-      <Route path='/promotions' exact component={PromotionsPage} />
-      <Route path='/reviews' exact component={GuestReviews} />
-      <Route path='/SignUP' exact component={SignUp} />
-      <Route path='/LogIn' exact component={LogIn} />
-      <Route path='/dashBoard' exact component={DashBoard} />
+      </AdminRoutes>
+      <AuthenticatedRoutes path='/promotions' exact>
+        <PromotionsPage />
+      </AuthenticatedRoutes>
+      <AuthenticatedRoutes path='/reviews' exact>
+        <GuestReviews />
+      </AuthenticatedRoutes>
+      <AuthenticatedRoutes path='/SignUP' exact component={SignUp} />
+      <AuthenticatedRoutes path='/LogIn' exact component={LogIn} />
+      <AuthenticatedRoutes path='/dashBoard' exact>
+        <DashBoard />
+      </AuthenticatedRoutes>
       <Route path='/'>
         <HomePage />
       </Route>

@@ -6,10 +6,18 @@ import { LinkContainer } from 'react-router-bootstrap'
 import Button from 'react-bootstrap/Button'
 import { NameAvatar } from './Avatar'
 import { AuthContext } from '../providers/AuthProvider'
+import { navItems } from '../Helpers/Constants'
+import NavDropdown from 'react-bootstrap/NavDropdown'
 
 export const NavBar = () => {
   const authContext = useContext(AuthContext)
   const { role } = authContext.authState.userInfo
+  const handleSelect = (eventKey) => {
+    if (eventKey === '4.1') {
+      return authContext.LogOut()
+    }
+  }
+  const fallBack = 'A'
   // here I need to create an array of navlink items and map it below with arr.include function
   return (
     <Container style={{ width: '100%' }}>
@@ -17,52 +25,31 @@ export const NavBar = () => {
         <Navbar.Brand href='/'>Logo</Navbar.Brand>
         <Navbar.Toggle aria-controls='responsive-navbar-nav' />
         <Navbar.Collapse id='responsive-navbar-nav'>
-          <Nav className='mr-auto'>
-            <LinkContainer to='/dashboard'>
-              <Nav.Link href='#features'>
-                <p>dashboard</p>
-              </Nav.Link>
-            </LinkContainer>
-            <LinkContainer to='/createHotel'>
-              <Nav.Link href='#pricing'>
-                <p>List your hotel</p>
-              </Nav.Link>
-            </LinkContainer>
-            <LinkContainer to='/propertOverview'>
-              <Nav.Link href='#pricing'>
-                <p>Property overview</p>
-              </Nav.Link>
-            </LinkContainer>
-            <LinkContainer to='/bookings'>
-              <Nav.Link href='#pricing'>
-                <p>Reservations</p>
-              </Nav.Link>
-            </LinkContainer>
-            <LinkContainer to='/ratesAndAvailab'>
-              <Nav.Link href='#pricing'>
-                <p>Rates and availabilites</p>
-              </Nav.Link>
-            </LinkContainer>
-            <LinkContainer to='/promotions'>
-              <Nav.Link href='#pricing'>
-                <p>Promotions</p>
-              </Nav.Link>
-            </LinkContainer>
-            <LinkContainer to='/reviews'>
-              <Nav.Link href='#pricing'>
-                <p>Guest reviews</p>
-              </Nav.Link>
-            </LinkContainer>
-            <LinkContainer to='/account'>
-              <Nav.Link href='#pricing'>Account view</Nav.Link>
-            </LinkContainer>
+          <Nav fill justify className='mr-auto'>
+            {navItems.map((navItem, i) => {
+              return (
+                <>
+                  {navItem.allowedRoles.includes(role) && (
+                    <LinkContainer key={i} to={navItem.path}>
+                      <Nav.Item key={i}>
+                        <Nav.Link href='#features'>
+                          <span>{navItem.label}</span>
+                        </Nav.Link>
+                      </Nav.Item>
+                    </LinkContainer>
+                  )}
+                </>
+              )
+            })}
           </Nav>
-          <Nav>
-            <Nav.Link href='#deets'>
-              <div style={{ width: 75 }}>
-                <NameAvatar />
-              </div>
-            </Nav.Link>
+          <Nav variant='pills' activeKey='1' onSelect={handleSelect}>
+            <NavDropdown
+              title={authContext.authState.userInfo.firstName || fallBack}
+              id='nav-dropdown'
+            >
+              <NavDropdown.Item eventKey='4.2'>Separated link</NavDropdown.Item>
+              <NavDropdown.Item eventKey='4.1'>Logout</NavDropdown.Item>
+            </NavDropdown>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
