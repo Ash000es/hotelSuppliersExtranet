@@ -14,7 +14,6 @@ const AuthProvider = ({ children }) => {
     expiresAt: expiresAt,
     userInfo: userInfo ? JSON.parse(userInfo) : {}
   })
-  console.log(authState, 'provider 252')
 
   const isAuthenticated = () => {
     if (!authState.token || !authState.expiresAt) {
@@ -22,14 +21,6 @@ const AuthProvider = ({ children }) => {
     }
     return new Date().getTime() / 1000 < authState.expiresAt
   }
-
-  console.log(isAuthenticated(), 'look here...')
-
-  // if (!authState.token || !authState.expiresAt) {
-  //   console.log('false')
-  // } else {
-  //   console.log('time here')
-  // }
 
   const setAuthInfo = ({ token, userInfo, expiresAt }) => {
     window.localStorage.setItem('token', token)
