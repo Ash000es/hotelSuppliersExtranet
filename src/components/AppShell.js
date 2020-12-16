@@ -7,9 +7,7 @@ export const AppShell = ({ children }) => {
   return (
     <>
       <div>{children}</div>
-      <div>
-        <Footer />
-      </div>
+      <div>{/* <Footer /> */}</div>
     </>
   )
 }

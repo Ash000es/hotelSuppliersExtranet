@@ -1,6 +1,6 @@
-import axios from 'axios'
+import Axios from 'axios'
 
-const publicFetch = axios.create({
+const publicFetch = Axios.create({
   baseURL: process.env.REACT_APP_API_URL
 })
 
