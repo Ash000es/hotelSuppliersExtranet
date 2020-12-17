@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/esm/Button'
 import { NavBar } from '../components/Navbar'
 import { AuthContext } from '../providers/AuthProvider'
 
-export const ReservationsPage = () => {
+const ReservationsPage = () => {
   const authContext = useContext(AuthContext)
   const token = authContext.authState.token
 
@@ -56,3 +56,4 @@ export const ReservationsPage = () => {
     </div>
   )
 }
+export default ReservationsPage
