@@ -18,7 +18,7 @@ export const NavBar = () => {
     }
   }
   const fallBack = 'A'
-  // here I need to create an array of navlink items and map it below with arr.include function
+
   return (
     <Container style={{ width: '100%' }}>
       <Navbar collapseOnSelect expand='md' className='navBar'>

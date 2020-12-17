@@ -30,7 +30,11 @@ const ReservationsPage = () => {
 
   axios.interceptors.request.use(
     (config) => {
-      config.headers.authorization = `Bearer ${token}`
+      const { origin } = new URL(config.url)
+      const allowedOrigins = [apiURL]
+      if (allowedOrigins.includes(origin)) {
+        config.headers.authorization = `Bearer ${token}`
+      }
       return config
     },
     (error) => {

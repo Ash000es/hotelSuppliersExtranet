@@ -9,7 +9,7 @@ import Navbar from 'react-bootstrap/Navbar'
 export const HomePage = () => {
   const authContext = useContext(AuthContext)
   const isIt = authContext.isAuthenticated()
-  console.log(authContext, isIt, 'here')
+
   return (
     <>
       <Navbar bg='light' variant='light'>

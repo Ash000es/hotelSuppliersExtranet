@@ -27,6 +27,7 @@ import { SignUp } from './SignUp'
 import { DashBoard } from './dashBoard'
 import { AppShell } from '../components/AppShell'
 import { NavBar } from '../components/Navbar'
+
 const ReservationsPage = lazy(() => import('./Reservations'))
 
 const AuthenticatedRoutes = ({ children, ...rest }) => {
