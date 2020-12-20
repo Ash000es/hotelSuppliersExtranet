@@ -7,11 +7,8 @@ import { AuthContext } from '../providers/AuthProvider'
 const ReservationsPage = () => {
   const authContext = useContext(AuthContext)
   const token = authContext.authState.token
-
   const [data, setData] = useState([])
   const [requestError, settRequestError] = useState()
-  console.log(data, 'ooo')
-
   const apiURL = 'http://localhost:5000/'
   const fetchData = useCallback(async () => {
     try {
@@ -27,14 +24,9 @@ const ReservationsPage = () => {
   //     Authorization: `Bearer ${token}`
   //   }
   // })
-
   axios.interceptors.request.use(
     (config) => {
-      const { origin } = new URL(config.url)
-      const allowedOrigins = [apiURL]
-      if (allowedOrigins.includes(origin)) {
-        config.headers.authorization = `Bearer ${token}`
-      }
+      config.headers.authorization = `Bearer ${token}`
       return config
     },
     (error) => {
@@ -44,17 +36,13 @@ const ReservationsPage = () => {
   return (
     <div>
       <NavBar />
-      <h1>I am reservations page</h1>
-      <Button onClick={() => fetchData()}>hitme</Button>
-
+      <h1> I am reservations page </h1> <Button onClick={() => fetchData()}> hitme </Button>{' '}
       {data.map((item, i) => {
         return (
-          <>
             <div item={item} key={i}>
-              <h2>{item.productName || item.hotelName}</h2>
-              <p>{item.productDescription || item.location}</p>
+              <h2> {item.productName || item.hotelName} </h2>{' '}
+              <p> {item.productDescription || item.location} </p>{' '}
             </div>
-          </>
         )
       })}
     </div>

@@ -66,12 +66,12 @@ const AppRoutes = () => {
         <AuthenticatedRoutes path='/propertOverview' exact>
           <PropertOverView />
         </AuthenticatedRoutes>
-        <AuthenticatedRoutes path='/bookings' exact>
+        <AdminRoutes path='/bookings' exact>
           <ReservationsPage />
-        </AuthenticatedRoutes>
-        <AdminRoutes exact path='/ratesAndAvailab'>
-          <RatesAndAvailab />
         </AdminRoutes>
+        <AuthenticatedRoutes exact path='/ratesAndAvailab'>
+          <RatesAndAvailab />
+        </AuthenticatedRoutes>
         <AuthenticatedRoutes path='/promotions' exact>
           <PromotionsPage />
         </AuthenticatedRoutes>
