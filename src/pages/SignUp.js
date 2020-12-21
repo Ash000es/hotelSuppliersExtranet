@@ -29,9 +29,7 @@ export const SignUp = () => {
   const submitCredentials = async (values) => {
     try {
       setLoginLoading(true)
-      console.log('Success:', values)
-      // console.log(publicFetch, 'fetch')
-      const { data } = await Axios.post('http://localhost:5000/users/signup', values, {
+      const { data } = await publicFetch.post('signup', values, {
         headers: {
           'Content-Type': 'application/json'
         }

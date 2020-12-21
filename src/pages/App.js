@@ -13,10 +13,8 @@ import {
 import Axios from 'axios'
 import './App.css'
 import { AuthContext, AuthProvider } from '../providers/AuthProvider'
-
 import { CreateHotelPage } from './CreateHotel'
 import { PropertOverView } from './PropertyOverview'
-// import { ReservationsPage } from './Reservations'
 import { RatesAndAvailab } from './RatesAndAvailab'
 import { PromotionsPage } from './Promotions'
 import { GuestReviews } from './GuestReviews'

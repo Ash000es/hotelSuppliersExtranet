@@ -4,6 +4,7 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import { AuthContext } from '../providers/AuthProvider'
 import { Redirect } from 'react-router-dom'
 import Axios from 'axios'
+import { publicFetch } from '../Helpers/Helpers'
 
 export const LogIn = () => {
   const authContext = useContext(AuthContext)
@@ -11,21 +12,17 @@ export const LogIn = () => {
   const [loginError, setLoginError] = useState()
   const [loginLoading, setLoginLoading] = useState(false)
   const [redirectOnLogin, setRedirectOnLogin] = useState(false)
-
   const submitCredentials = async (values) => {
     try {
       setLoginLoading(true)
-
-      const { data } = await Axios.post('http://localhost:5000/users/login', values, {
+      const { data } = await publicFetch.post('users/login', values, {
         headers: {
           'Content-Type': 'application/json'
         }
       })
-
       authContext.setAuthState(data)
       setLoginSuccess(data.message)
       setLoginError('')
-
       setRedirectOnLogin(true)
     } catch (error) {
       console.log(error, 'erro')
@@ -82,12 +79,10 @@ export const LogIn = () => {
             <Form.Item name='remember' valuePropName='checked' noStyle>
               <Checkbox>Remember me</Checkbox>
             </Form.Item>
-
             <a className='login-form-forgot' href=''>
               Forgot password
             </a>
           </Form.Item>
-
           <Form.Item>
             <Button type='primary' htmlType='submit' className='login-form-button'>
               Log in
