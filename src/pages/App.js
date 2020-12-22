@@ -25,6 +25,7 @@ import { SignUp } from './SignUp'
 import { DashBoard } from './dashBoard'
 import { AppShell } from '../components/AppShell'
 import { NavBar } from '../components/Navbar'
+import { FetchProvider } from '../providers/FetchProvider'
 
 const ReservationsPage = lazy(() => import('./Reservations'))
 
@@ -93,9 +94,11 @@ function App() {
   return (
     <Router>
       <AuthProvider>
+        <FetchProvider>
         <div className='bg-gray-100'>
           <AppRoutes />
         </div>
+        </FetchProvider>
       </AuthProvider>
     </Router>
   )

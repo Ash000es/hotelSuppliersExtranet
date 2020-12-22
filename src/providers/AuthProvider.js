@@ -5,12 +5,11 @@ const { Provider } = AuthContext
 
 const AuthProvider = ({ children }) => {
   const history = useHistory()
-  const token = window.localStorage.getItem('token')
+  // const token = window.localStorage.getItem('token')
   const userInfo = window.localStorage.getItem('userInfo')
   const expiresAt = window.localStorage.getItem('expiresAt')
-
   const [authState, setAuthState] = useState({
-    token: token,
+    token: null,
     expiresAt: expiresAt,
     userInfo: userInfo ? JSON.parse(userInfo) : {}
   })
@@ -23,7 +22,6 @@ const AuthProvider = ({ children }) => {
   }
 
   const setAuthInfo = ({ token, userInfo, expiresAt }) => {
-    window.localStorage.setItem('token', token)
     window.localStorage.setItem('userInfo', JSON.stringify(userInfo))
     window.localStorage.setItem('expiresAt', expiresAt)
 
@@ -34,7 +32,6 @@ const AuthProvider = ({ children }) => {
     })
   }
   const LogOut = () => {
-    window.localStorage.removeItem('token')
     window.localStorage.removeItem('expiresAt')
     window.localStorage.removeItem('userInfo')
     setAuthState({

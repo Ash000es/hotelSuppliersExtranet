@@ -3,19 +3,25 @@ import { Form, Input, Button, Checkbox, Card } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import { AuthContext } from '../providers/AuthProvider'
 import { Redirect } from 'react-router-dom'
-import Axios from 'axios'
+// import Axios from 'axios'
 import { publicFetch } from '../Helpers/Helpers'
+import { FetchContext } from '../providers/FetchProvider'
+import axios from 'axios'
 
 export const LogIn = () => {
+  const fetchContext = useContext(FetchContext)
   const authContext = useContext(AuthContext)
   const [loginSuccess, setLoginSuccess] = useState()
   const [loginError, setLoginError] = useState()
   const [loginLoading, setLoginLoading] = useState(false)
   const [redirectOnLogin, setRedirectOnLogin] = useState(false)
+  const authAxios = axios.create({
+    baseURL: process.env.REACT_APP_API_URL
+  })
   const submitCredentials = async (values) => {
     try {
       setLoginLoading(true)
-      const { data } = await publicFetch.post('users/login', values, {
+      const { data } = await authAxios.post('users/login', values, {
         headers: {
           'Content-Type': 'application/json'
         }
