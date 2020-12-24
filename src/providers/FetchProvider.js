@@ -13,7 +13,7 @@ const FetchProvider = ({ children }) => {
     const getCsrfToken = async () => {
       const { data } = await authAxios.get('/csrf-token')
       console.log(data)
-      authAxios.defaults.headers['X-CSRF-Token'] = data.csrfToken
+      authAxios.defaults.headers['csrf-token'] = data.csrfToken
     }
     getCsrfToken()
   }, [])

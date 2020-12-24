@@ -21,11 +21,16 @@ export const LogIn = () => {
   const submitCredentials = async (values) => {
     try {
       setLoginLoading(true)
-      const { data } = await authAxios.post('users/login', values, {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
+      const { data } = await authAxios.post(
+        'users/login',
+        values,
+        { withCredentials: true }
+        // {
+        //   headers: {
+        //     'Content-Type': 'application/json'
+        //   }
+        // }
+      )
       authContext.setAuthState(data)
       setLoginSuccess(data.message)
       setLoginError('')
