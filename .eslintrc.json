@@ -1,14 +1,20 @@
 {
-    "parser": "babel-eslint",
-    "extends": ["standard", "standard-react"],
-    "rules": {
-        "react/prop-types": "off",
-        "no-async-promise-executor": "off",
-        "no-misleading-character-class": "off",
-        "no-useless-catch": "off",
-        "jsx-quotes":"off",
-        "no-unused-vars": "off"
-  
-       
+  "parser": "babel-eslint",
+  "extends": ["standard", "standard-react"],
+  "rules": {
+    "react/prop-types": "off",
+    "no-async-promise-executor": "off",
+    "no-misleading-character-class": "off",
+    "no-useless-catch": "off",
+    "jsx-quotes": "off",
+    "no-unused-vars": "off",
+    "space-before-function-paren": [
+      "error",
+      {
+        "anonymous": "ignore",
+        "named": "ignore",
+        "asyncArrow": "ignore"
       }
+    ]
   }
+}

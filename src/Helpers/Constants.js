@@ -407,7 +407,7 @@ export const nonFreeCancelation = [
   {
     code: 82,
     description:
-      'The guest will be charged 70% of the total price if they cancel after reservation and the total price if they cancel in the 2 days before arrival.	'
+      'The guest will be charged 70% of the total price if they cancel after reservation and the total price if they cancel in the 2 days before arrival.'
   },
   {
     code: 83,
