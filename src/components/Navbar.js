@@ -41,14 +41,14 @@ export const NavBar = () => {
                 </>
               )
             })}
-          </Nav>
-          <Nav variant='pills' activeKey='1' onSelect={handleSelect}>
             <NavDropdown
               title={authContext.authState.userInfo.firstName || fallBack}
               id='nav-dropdown'
             >
               <NavDropdown.Item eventKey='4.2'>Separated link</NavDropdown.Item>
-              <NavDropdown.Item eventKey='4.1'>Logout</NavDropdown.Item>
+              <NavDropdown.Item onSelect={handleSelect} eventKey='4.1'>
+                Logout
+              </NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
