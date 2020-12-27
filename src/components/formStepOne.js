@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Container from 'react-bootstrap/Container'
 import {
   Form,
   Input,
@@ -6,7 +7,6 @@ import {
   Radio,
   Select,
   Cascader,
-  DatePicker,
   InputNumber,
   TreeSelect,
   Switch,
@@ -16,43 +16,47 @@ import {
   AutoComplete
 } from 'antd'
 
-export const FormStepOne = () => {
+export const FormStepOne = (props) => {
   const [componentSize, setComponentSize] = useState('default')
-  const { Option } = Select
-  const AutoCompleteOption = AutoComplete.Option
-  const prefixSelector = (
-    <Form.Item name='prefix' noStyle>
-      <Select
-        style={{
-          width: 70
-        }}
-      >
-        <Option value='86'>+86</Option>
-        <Option value='87'>+87</Option>
-      </Select>
-    </Form.Item>
-  )
-  const [autoCompleteResult, setAutoCompleteResult] = useState([])
+  const {
+    accommodationType,
+    categoryName,
+    contactDetails,
+    name,
+    city,
+    postCode,
+    areaName,
+    address,
+    email,
+    phones,
+    destinationName
+  } = props.formState
+  const { setFormState } = props.setFormState
 
-  const onFormLayoutChange = ({ size }) => {
-    setComponentSize(size)
-  }
-  const onWebsiteChange = (value) => {
-    if (!value) {
-      setAutoCompleteResult([])
-    } else {
-      setAutoCompleteResult(['.com', '.org', '.net'].map((domain) => `${value}${domain}`))
-    }
+  const onFormLayoutChange = (size, e) => {
+    console.log(size, e)
+    // setFormState(size)
+    // setComponentSize(size)
   }
 
-  const websiteOptions = autoCompleteResult.map((website) => ({
-    label: website,
-    value: website
-  }))
+  const initialValues = {
+    accommodationType,
+    categoryName,
+    contactDetails,
+    name,
+    city,
+    postCode,
+    areaName,
+    address,
+    email,
+    phones,
+    destinationName
+  }
 
   return (
     <>
-      <h4>Welcome to ladybirdy.com, within minutes you could be selling your unsold inventory</h4>
+      <h4>Welcome</h4>
+
       <Form
         labelCol={{
           span: 4
@@ -62,83 +66,55 @@ export const FormStepOne = () => {
         }}
         layout='vertical'
         initialValues={{
-          size: componentSize
+          size: 'default'
         }}
         onValuesChange={onFormLayoutChange}
-        size={componentSize}
+        size='default'
       >
-        <Form.Item label='Form Size' name='size'>
-          <Radio.Group>
-            <Radio.Button value='small'>Small</Radio.Button>
-            <Radio.Button value='default'>Default</Radio.Button>
-            <Radio.Button value='large'>Large</Radio.Button>
-          </Radio.Group>
-        </Form.Item>
-        <Form.Item label='name of your accomodation'>
+        <Form.Item label='name of the hotel' name='name'>
           <Input />
         </Form.Item>
-        <Form.Item label='number of stars'>
+        <Form.Item label='type of accommodation' name='accommodationType'>
           <Select>
-            <Select.Option value='demo'>3 stars</Select.Option>
+            <Select.Option value='hotel'>hotel</Select.Option>
+            <Select.Option value='villa'>villa</Select.Option>
+            <Select.Option value='Apartment'>Apartment</Select.Option>
           </Select>
         </Form.Item>
-        <Form.Item
-          name='website'
-          label='Website'
-          rules={[
-            {
-              required: true,
-              message: 'Please input website!'
-            }
-          ]}
-        >
-          <AutoComplete options={websiteOptions} onChange={onWebsiteChange} placeholder='website'>
-            <Input />
-          </AutoComplete>
+        <Form.Item label='TreeSelect'>
+          <TreeSelect
+            treeData={[
+              {
+                title: 'Light',
+                value: 'light',
+                children: [
+                  {
+                    title: 'Bamboo',
+                    value: 'bamboo'
+                  }
+                ]
+              }
+            ]}
+          />
         </Form.Item>
-        <Form.Item label='name of contact person'>
-          <Input />
+        <Form.Item label='Cascader'>
+          <Cascader
+            options={[
+              {
+                value: 'zhejiang',
+                label: 'Zhejiang',
+                children: [
+                  {
+                    value: 'hangzhou',
+                    label: 'Hangzhou'
+                  }
+                ]
+              }
+            ]}
+          />
         </Form.Item>
-        <Form.Item
-          name='phone'
-          label='Phone Number'
-          rules={[{ required: true, message: 'Please input your phone number!' }]}
-        >
-          <Input addonBefore={prefixSelector} style={{ width: '100%' }} />
-        </Form.Item>
-        <Form.Item name='radio-group' label='are you using a channel manager'>
-          <Radio.Group>
-            <Radio value='a'>Yes</Radio>
-            <Radio value='b'>No</Radio>
-          </Radio.Group>
-        </Form.Item>
-        <Form.Item label='name of channel manager'>
-          <Input />
-        </Form.Item>
-        <Form.Item
-          name='select'
-          label='Select'
-          hasFeedback
-          rules={[
-            {
-              required: true,
-              message: 'Please select your country!'
-            }
-          ]}
-        >
-          <Form.Item label='street name'>
-            <Input />
-          </Form.Item>
-          <Select placeholder='Please select a country'>
-            <Option value='china'>China</Option>
-            <Option value='usa'>U.S.A</Option>
-          </Select>
-        </Form.Item>
-        <Form.Item label='city name'>
-          <Input />
-        </Form.Item>
-        <Form.Item label='post code'>
-          <Input />
+        <Form.Item label='InputNumber'>
+          <InputNumber />
         </Form.Item>
       </Form>
     </>

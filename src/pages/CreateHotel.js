@@ -3,25 +3,53 @@ import { NavBar } from '../components/Navbar'
 import { Steps, Button, message } from 'antd'
 import { FormStepOne } from '../components/formStepOne'
 import { FormStepTwo } from '../components/formStepTwo'
-const { Step } = Steps
-
-const steps = [
-  {
-    title: 'First',
-    content: <FormStepOne />
-  },
-  {
-    title: 'Second',
-    content: <FormStepTwo />
-  },
-  {
-    title: 'Last',
-    content: 'Last-content'
-  }
-]
 
 export const CreateHotelPage = () => {
-  const [current, setCurrent] = React.useState(0)
+  const [current, setCurrent] = useState(0)
+  const [formState, setFormState] = useState({
+    accommodationType: '',
+    categoryName: '',
+    contactDetails: {},
+    name: '',
+    city: '',
+    postCode: '',
+    areaName: '',
+    address: {},
+    email: '',
+    phones: '',
+    destinationName: '',
+    // latitude: { type: String, required: false },
+    // longitude: { type: String, required: false },
+    images: [],
+    amenities: [],
+    rooms: []
+    // minRate: { type: String, required: false },
+    // maxRate: { type: String, required: false },
+    // currency: { type: String, required: false },
+    // license: { type: String, required: false },
+    // label: { type: String, required: false },
+    // Extras: [{ type: Object, required: false }],
+  })
+  const handleChange = (input) => (e) => {
+    console.log(input, e)
+    // setFormState({ [input]: e.target.value })
+  }
+  const { Step } = Steps
+  console.log(formState, 'state')
+  const steps = [
+    {
+      title: 'First',
+      content: <FormStepOne formState={formState} setFormState={setFormState} />
+    },
+    {
+      title: 'Second',
+      content: <FormStepTwo handleChange={handleChange} />
+    },
+    {
+      title: 'Last',
+      content: 'Last-content'
+    }
+  ]
 
   const next = () => {
     setCurrent(current + 1)

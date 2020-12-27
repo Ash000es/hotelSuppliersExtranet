@@ -26,6 +26,7 @@ import { DashBoard } from './dashBoard'
 import { AppShell } from '../components/AppShell'
 import { NavBar } from '../components/Navbar'
 import { FetchProvider } from '../providers/FetchProvider'
+import Container from 'react-bootstrap/Container'
 
 const ReservationsPage = lazy(() => import('./Reservations'))
 
@@ -92,6 +93,7 @@ const AppRoutes = () => {
 
 function App() {
   return (
+    <Container fixed>
     <Router>
       <AuthProvider>
         <FetchProvider>
@@ -101,6 +103,7 @@ function App() {
         </FetchProvider>
       </AuthProvider>
     </Router>
+    </Container>
   )
 }
 
