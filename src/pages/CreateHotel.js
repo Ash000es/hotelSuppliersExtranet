@@ -6,7 +6,7 @@ import { FormStepTwo } from '../components/formStepTwo'
 
 export const CreateHotelPage = () => {
   const [current, setCurrent] = useState(0)
-  const [formState, setFormState] = useState({
+  const [fieldValues, setFieldsValue] = useState({
     accommodationType: '',
     categoryName: '',
     contactDetails: {},
@@ -35,11 +35,11 @@ export const CreateHotelPage = () => {
     // setFormState({ [input]: e.target.value })
   }
   const { Step } = Steps
-  console.log(formState, 'state')
+  // console.log(fieldValues, 'state')
   const steps = [
     {
       title: 'First',
-      content: <FormStepOne formState={formState} setFormState={setFormState} />
+      content: <FormStepOne fieldValues={fieldValues} setFieldsValue={setFieldsValue} />
     },
     {
       title: 'Second',

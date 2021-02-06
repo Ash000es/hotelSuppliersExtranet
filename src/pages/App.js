@@ -93,16 +93,16 @@ const AppRoutes = () => {
 
 function App() {
   return (
-    <Container fixed>
-    <Router>
-      <AuthProvider>
-        <FetchProvider>
-        <div className='bg-gray-100'>
-          <AppRoutes />
-        </div>
-        </FetchProvider>
-      </AuthProvider>
-    </Router>
+    <Container>
+      <Router>
+        <AuthProvider>
+          <FetchProvider>
+            <div className='bg-gray-100'>
+              <AppRoutes />
+            </div>
+          </FetchProvider>
+        </AuthProvider>
+      </Router>
     </Container>
   )
 }
