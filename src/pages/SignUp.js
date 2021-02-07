@@ -29,23 +29,24 @@ export const SignUp = () => {
   const submitCredentials = async (values) => {
     try {
       setLoginLoading(true)
-      const { data } = await publicFetch.post('signup', values, {
+      const { data } = await publicFetch.post('users/signup', values, {
         headers: {
           'Content-Type': 'application/json'
         }
       })
-      authContext.setAuthState(data)
+      console.log(data, 'returned data')
+      // authContext.setAuthState(data)
       setSignupSuccess(data.message)
+      console.log('one')
       setSignupError('')
 
-      console.log('Success:', data)
+      console.log('Success:', data.message)
       setRedirectOnLogin(true)
     } catch (error) {
       setLoginLoading(false)
       console.log(error)
       const { data } = error.response
       setSignupError(data.message)
-      console.log(data.message)
       setSignupSuccess('')
     }
   }
@@ -59,7 +60,7 @@ export const SignUp = () => {
 
   return (
     <>
-      {redirectOnLogin && <Redirect to='./dashboard' />}
+      {redirectOnLogin && <Redirect to='/' />}
       <Card style={{ width: '50%' }}>
         <Form
           {...layout}

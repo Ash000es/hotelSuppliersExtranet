@@ -5,9 +5,9 @@ const { Provider } = AuthContext
 
 const AuthProvider = ({ children }) => {
   const history = useHistory()
-  const token = document.cookie
+  // const token = document.cookie
   // window.Cookies.getItem('token')
-  console.log(token, 'kk')
+  // console.log(token, 'kk')
   const userInfo = window.localStorage.getItem('userInfo')
   const expiresAt = window.localStorage.getItem('expiresAt')
   const [authState, setAuthState] = useState({
