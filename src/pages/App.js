@@ -80,6 +80,7 @@ const AppRoutes = () => {
         </AuthenticatedRoutes>
         <AuthenticatedRoutes path='/SignUP' exact component={SignUp} />
         <AuthenticatedRoutes path='/LogIn' exact component={LogIn} />
+        <AuthenticatedRoutes path='/users/verify-email' exact component={LogIn} />
         <AuthenticatedRoutes path='/dashBoard' exact>
           <DashBoard />
         </AuthenticatedRoutes>
